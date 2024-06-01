@@ -1,4 +1,4 @@
-## RFQ Opening Process
+## ERPNext Extensions on Request for Quotation and Supplier Quotation to include Committee Bid Openings
 
 **Committee**
 The system allows setting up of quote/bid opening committee, and the committee members that will open quotes or bids once their opening date and time is due.
