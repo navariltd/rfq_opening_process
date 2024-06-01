@@ -7,11 +7,12 @@ from .rfq_opening_process.doctype.request_for_quotation.request_for_quotation im
 )
 
 app_name = "rfq_opening_process"
-app_title = "RFQ Opening Process"
+app_title = "Navari RFQ Opening Process"
 app_publisher = "Navari Limited"
-app_description = "Customization on RFQ and Supplier Quotation Opening process."
+app_description = "ERPNext Extensions on Request for Quotation and Supplier Quotation to include Committee Bid Openings"
 app_email = "info@navari.co.ke"
 app_license = "GNU General Public License (v3)"
+required_apps = ["frappe/erpnext"]
 
 # Includes in <head>
 # ------------------
