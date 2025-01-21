@@ -6,7 +6,8 @@
  "engine": "InnoDB",
  "field_order": [
   "user_id",
-  "full_name"
+  "full_name",
+  "signature"
  ],
  "fields": [
   {
@@ -27,12 +28,17 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Full Name"
+  },
+  {
+   "fieldname": "signature",
+   "fieldtype": "Signature",
+   "label": "Signature"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-11-03 13:43:18.688670",
+ "modified": "2025-01-20 18:38:07.331003",
  "modified_by": "Administrator",
  "module": "RFQ Opening Process",
  "name": "Committee Member",

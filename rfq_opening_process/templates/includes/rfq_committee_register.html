@@ -1,0 +1,32 @@
+<div>
+  <h3>RFQ NO: {{ rfq_name }} FOR SUPPLY AND DELIVERY OF ICT ITEMS QUOTATION OPENING ON {{ transaction_date }}.</h3>
+
+  <h3 class="text-center font-weight-bold">OPENING COMMITTEE REGISTER</h3>
+
+  {% if committee_members %}
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Signature</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for idx, member in enumerate(committee_members) %}
+      <tr>
+        <td>{{ idx + 1 }}</td>
+        <td>{{ member.get("full_name") }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% endif %}
+
+
+
+</div>

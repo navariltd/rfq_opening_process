@@ -1,0 +1,94 @@
+<div>
+  <div>
+    <div style="width: 100%" class="text-center">
+      <h3 >RFQ EVALUATION COMMITTEE REPORT/MINUTES</h3>
+    </div>
+    <h3 class="text-uppercase">PURCHASE {{ pi_title }}</h3>
+  </div>
+  <div>
+    <h3>1. PROCUREMENT PROCESS</h3>
+    <p>The method of Procurement used was Request for Quotation (RFQ). The request for engagement of these registered firms was made through approved {{ pi_note.get("purchase_intent_note") }}</p>
+    <p>The Request for Quotation was sent out on {{ transaction_date }}. The deadline for submission of the quotation was {{ closing_date }}. The bidders were required to submit their quote response through the e-procurement system.</p>
+  </div>
+  <div>
+    <h3>2. TENDER OPENING</h3>
+    <p>An opening Committee was dully appointed by the Managing Director which comprised of the following members of staff;</p>
+    {% if committee_members %}
+      <ol>
+        {% for member in committee_members %}
+        <li>{{ member.get("full_name") }}</li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+
+    <p>The tenders were opened as per the 2015 Act and regulations of 2020. The committee members opened the quotations online through e-procurement. </p>
+    <p>A total of {{ no_of_suppliers }} quotations were received and opened as indicated in the tender opening minutes. The opening committee noted and recorded that all the bidders submitted their quotations for one-way air ticket on {{ closing_date }}.</p>
+  </div>
+  <div>
+    <h3>3. RESPONSES</h3>
+    
+
+    {% if supplier_quotations %}
+    <p>The following Bidders submitted their quotations and are listed as per the Tender opening as shown below:-</p>
+    </p>
+  
+      <ol>
+        {% for quotation in supplier_quotations %}
+          <li>{{ quotation.supplier_name }}</li>
+        {% endfor %}
+      </ol>
+      
+    {% endif %}
+  </div>
+  <div>
+    <h3>4. EVALUATION COMMITTEE</h3>
+    <p>The Managing Director appointed the following Officers to undertake the Evaluation of the quotations received and submit a recommendation for consideration of award of the contract:-</p>
+    {% if committee_members %}
+      <ol>
+        {% for member in committee_members %}
+        <li>{{ member.get("full_name") }}</li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+  </div>
+  <div>
+    <h3>5. DECLARATION OF NO CONFLICT OF INTEREST</h3>
+    <p>There was no conflict of interest declared.</p>
+  </div>
+  <div>
+    <h3>6. TECHNICAL QUOTATION EVALUATION PROCESS</h3>
+    <p>The evaluation was carried out as provided for in the evaluation criteria (Lowest evaluated bidder meeting specifications) as follows:-</p>
+  </div>
+  <div>
+    <h3>7. STAGE 1: EVALUATION</h3>
+    <p>The Bidders submitted their quotations and summarised as per indicated on the table below:-</p>
+  </div>
+  <div>
+    <h3>8. RECOMMENDATION</h3>
+    <p>Pursuant to Section 80(4) of the public procurement and asset disposal act 2015, the Evaluation Committee thus recommends the award to M/S Longrock Tours and travel Ltd being the lowest bidder as highlighted in the table above.</p>
+
+    {% if committee_members %}
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>S/No.</th>
+        <th>Name</th>
+        <th>Signature</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for idx, member in enumerate(committee_members) %}
+      <tr>
+        <td>{{ idx + 1 }}</td>
+        <td>{{ member.get("full_name") }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% endif %}
+  </div>
+</div>
