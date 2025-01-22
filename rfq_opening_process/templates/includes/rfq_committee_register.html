@@ -1,5 +1,5 @@
 <div>
-  <h3>RFQ NO: {{ rfq_name }} FOR SUPPLY AND DELIVERY OF ICT ITEMS QUOTATION OPENING ON {{ transaction_date }}.</h3>
+  <h3>RFQ NO: {{ rfq_name }} FOR SUPPLY AND DELIVERY OF {{ pi_title }} QUOTATION OPENING ON {{ transaction_date }}.</h3>
 
   <h3 class="text-center font-weight-bold">OPENING COMMITTEE REGISTER</h3>
 
@@ -19,7 +19,7 @@
         <td>{{ idx + 1 }}</td>
         <td>{{ member.get("full_name") }}</td>
         <td></td>
-        <td></td>
+        <td>{{ date }}</td>
       </tr>
       {% endfor %}
     </tbody>

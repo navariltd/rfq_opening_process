@@ -13,7 +13,8 @@
   "column_break_bgma",
   "note_type",
   "section_break_eecl",
-  "generated_content"
+  "generated_content",
+  "amended_from"
  ],
  "fields": [
   {
@@ -24,7 +25,7 @@
    "fieldname": "quotation",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Quotation",
+   "label": "Request for Quotation",
    "options": "Request for Quotation",
    "reqd": 1
   },
@@ -46,7 +47,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Note Type",
-   "options": "Committee Register\nEvaluation Minutes\nOpening Minutes",
+   "options": "\nCommittee Register\nEvaluation Minutes\nOpening Minutes",
    "reqd": 1
   },
   {
@@ -62,11 +63,22 @@
    "fieldtype": "Date",
    "label": "Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Committee Notes",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-01-21 15:16:42.552527",
+ "modified": "2025-01-22 16:41:48.636708",
  "modified_by": "Administrator",
  "module": "RFQ Opening Process",
  "name": "Committee Notes",
