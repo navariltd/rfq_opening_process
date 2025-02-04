@@ -30,15 +30,16 @@
    "label": "Full Name"
   },
   {
+   "fetch_from": "user_id.signature",
    "fieldname": "signature",
-   "fieldtype": "Signature",
+   "fieldtype": "Attach",
    "label": "Signature"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-01-20 18:38:07.331003",
+ "modified": "2025-02-04 14:48:09.162627",
  "modified_by": "Administrator",
  "module": "RFQ Opening Process",
  "name": "Committee Member",

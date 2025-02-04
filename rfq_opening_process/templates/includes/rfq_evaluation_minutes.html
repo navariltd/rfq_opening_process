@@ -79,11 +79,18 @@
     </thead>
     <tbody>
       {% for idx, member in enumerate(committee_members) %}
+      {% set user_signature = frappe.db.get_value("User", {"name": member.user_id }, ["signature"]) %}
       <tr>
         <td>{{ idx + 1 }}</td>
-        <td>{{ member.get("full_name") }}</td>
-        <td></td>
-        <td></td>
+        <td style="width: 30%">{{ member.get("full_name") }}</td>
+        {% if user_signature%}
+          <td style="width: 30%"><img width="100" height="50" src="{{ user_signature }}" /></td>
+        {% else %}
+          {% set names = member.full_name.split(" ") %}
+          {% set member_initials =  "".join([names[0][0], names[1][0]]) %}
+        <td style="width: 30%">{{ member_initials }}</td>
+        {% endif %}
+        <td style="width: 30%"></td>
       </tr>
       {% endfor %}
     </tbody>

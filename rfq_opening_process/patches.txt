@@ -1,0 +1,5 @@
+[pre_model_sync]
+
+
+[post_model_sync]
+rfq_opening_process.rfq_opening_process.patches.user_custom_field

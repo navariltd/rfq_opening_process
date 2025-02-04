@@ -136,7 +136,7 @@ def generate_template(quotation, note_type, date):
             member_data = frappe.db.get_value(
                 "Committee Member",
                 filters={"name": member.name},
-                fieldname=["full_name", "signature"],
+                fieldname=["full_name", "name", "user_id"],
                 as_dict=1,
             )
             # signature_img = get_signature_image(member_data)
@@ -189,5 +189,6 @@ def generate_template(quotation, note_type, date):
         rendered_content = frappe.render_template(
             f"{template_path}/rfq_committee_register.html", context=context
         )
+        print("CONTEXT", context)
 
     frappe.response["message"] = rendered_content
