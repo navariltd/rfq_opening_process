@@ -1,7 +1,5 @@
 from collections import defaultdict
 from datetime import datetime
-import os
-import base64
 
 import frappe
 from frappe.query_builder import DocType
@@ -19,40 +17,6 @@ def format_date_with_ordinal(date_obj):
 
     formatted_date = date_obj.strftime(f"%d{suffix} %B, %Y")
     return formatted_date
-
-
-def get_signature_image(member_data):
-    public_path = frappe.utils.get_site_path("public", "files")
-
-    if member_data:
-        image_name = (
-            f"{member_data.get('full_name', 'image').replace(' ','_').lower()}.png"
-        )
-        base64_image = member_data.get("signature")
-        if base64_image.startswith("data:image/png;base64,"):
-            base64_image = base64_image.replace("data:image/png;base64,", "")
-
-        full_file_path = os.path.join(public_path, image_name)
-
-        with open(full_file_path, "wb") as fh:
-            fh.write(base64.b64decode(base64_image))
-
-        file_record = frappe.get_doc(
-            {
-                "doctype": "File",
-                "file_name": image_name,
-                "file_url": f"/files/{image_name}",
-                "attached_to_name": "Test Name",
-                "attached_to_doctype": "Committee",
-                "file_size": os.path.getsize(full_file_path),
-                "is_private": 0,
-                "file_type": "PNG",
-            }
-        )
-
-        file_record.insert()
-
-        return f"/files/{image_name}"
 
 
 def get_supplier_quotations(rfq):
@@ -139,10 +103,6 @@ def generate_template(quotation, note_type, date):
                 fieldname=["full_name", "name", "user_id"],
                 as_dict=1,
             )
-            # signature_img = get_signature_image(member_data)
-            # if signature_img:
-            #     frappe.log_error(signature_img)
-            #     member_data["signature_img"] = signature_img
             committee_data.append(member_data)
 
     context = defaultdict()
@@ -155,6 +115,9 @@ def generate_template(quotation, note_type, date):
     context["transaction_date"] = format_date_with_ordinal(
         datetime.strptime(rfq_doc.get_formatted("transaction_date"), "%d-%m-%Y")
     )
+    context["opening_date"] = datetime.strptime(
+        rfq_doc.get_formatted("closing_date"), "%d-%m-%Y"
+    ).strftime("%d/%m/%Y")
     context["closing_date"] = format_date_with_ordinal(
         datetime.strptime(rfq_doc.get_formatted("closing_date"), "%d-%m-%Y")
     )
