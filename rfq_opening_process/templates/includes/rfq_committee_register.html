@@ -1,0 +1,36 @@
+<div>
+  <h3>RFQ NO: {{ rfq_name }} FOR SUPPLY AND DELIVERY OF {{ pi_title }} QUOTATION OPENING ON {{ transaction_date }}.</h3>
+
+  <h3 class="text-center font-weight-bold">OPENING COMMITTEE REGISTER</h3>
+
+  {% if committee_members %}
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>S/No.</th>
+        <th>Name</th>
+        <th>Signature</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for idx, member in enumerate(committee_members) %}
+      {% set user_signature = frappe.db.get_value("User", {"name": member.user_id }, ["signature"]) %}
+      <tr>
+        <td>{{ idx + 1 }}</td>
+        <td style="width: 30%">{{ member.get("full_name") }}</td>
+        {% if user_signature%}
+          <td style="width: 30%"><img width="100" height="25" src="{{ user_signature }}" /></td>
+        {% else %}
+          {% set names = member.full_name.split(" ") %}
+          {% set member_initials =  "".join([names[0][0], names[1][0]]) %}
+        <td style="width: 30%">{{ member_initials }}</td>
+        {% endif %}
+        <td style="width: 30%">{{ date }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% endif %}
+</div>
